@@ -1,5 +1,5 @@
 # Major Picks 🏆
-### PGA Golf Major Draft App — Andy, Buck & Co
+### PGA Golf Major Draft App — Andy, Buck & Co 
 
 ---
 
