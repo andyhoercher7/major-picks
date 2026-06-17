@@ -136,7 +136,7 @@ CREATE POLICY "Update invites" ON public.invites FOR UPDATE TO authenticated USI
 
 INSERT INTO public.tournaments (id, name, short_name, venue, dates, theme, status, year, season_order, draft_open) VALUES
 ('pga2026',     'PGA Championship',        'PGA',     'Quail Hollow Club',   'May 15–18, 2026',   'theme-pga',      'active',   2026, 1, true),
-('usopen2026',  'U.S. Open',               'US Open', 'Oakmont Country Club','Jun 12–15, 2026',   'theme-us-open',  'upcoming', 2026, 2, false),
+('usopen2026',  'U.S. Open',               'US Open', 'Shinnecock Hills',   'Jun 12–15, 2026',   'theme-us-open',  'upcoming', 2026, 2, false),
 ('open2026',    'The Open Championship',   'Open',    'Royal Portrush',      'Jul 17–20, 2026',   'theme-open',     'upcoming', 2026, 3, false),
 ('players2027', 'THE PLAYERS Championship','Players', 'TPC Sawgrass',        'Mar 12–15, 2027',   'theme-players',  'upcoming', 2027, 4, false),
 ('masters2027', 'The Masters',             'Masters', 'Augusta National',    'Apr 9–12, 2027',    'theme-masters',  'upcoming', 2027, 5, false);
