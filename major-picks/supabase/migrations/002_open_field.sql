@@ -5,7 +5,12 @@
 --
 -- Fixes: the draft picker showed "No players found" for The Open
 -- because tournament_field only had rows seeded for pga2026.
+-- Also corrects the 2026 Open venue (Royal Birkdale, not Portrush).
 -- ============================================================
+
+-- Correct the venue for existing installs (2026 Open is at Royal Birkdale).
+UPDATE public.tournaments SET venue = 'Royal Birkdale'
+  WHERE id = 'open2026' AND venue = 'Royal Portrush';
 
 INSERT INTO public.tournament_field (tournament_id, player_name, country, odds) VALUES
 ('open2026','Rory McIlroy','NIR','+700'),
