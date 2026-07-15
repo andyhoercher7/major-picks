@@ -124,16 +124,28 @@ export async function getField(tournamentId) {
     .order('odds_decimal', { ascending: true, nullsLast: true })
 }
 
+// Maps each tournament to its The Odds API sport key so odds refresh
+// pulls the correct event instead of always defaulting to the PGA.
+const ODDS_SPORT_KEYS = {
+  pga2026: 'golf_pga_championship',
+  usopen2026: 'golf_us_open',
+  open2026: 'golf_the_open_championship',
+  players2027: 'golf_players_championship',
+  masters2027: 'golf_masters_tournament'
+}
+
 export async function refreshOdds(tournamentId) {
   const apiKey = process.env.REACT_APP_ODDS_API_KEY
   if (!apiKey || apiKey === 'YOUR_ODDS_API_KEY') {
     return { error: 'No Odds API key configured' }
   }
 
+  const sportKey = ODDS_SPORT_KEYS[tournamentId] || 'golf_pga_championship'
+
   try {
-    // The Odds API — golf_pga_championship event
+    // The Odds API — outright winner odds for this tournament
     const res = await fetch(
-      `https://api.the-odds-api.com/v4/sports/golf_pga_championship/odds/?apiKey=${apiKey}&regions=us&markets=h2h&oddsFormat=american`
+      `https://api.the-odds-api.com/v4/sports/${sportKey}/odds/?apiKey=${apiKey}&regions=us&markets=h2h&oddsFormat=american`
     )
     const data = await res.json()
     if (!data || data.error) return { error: data?.message || 'API error' }
